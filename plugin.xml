@@ -17,4 +17,12 @@
             <header-file src="src/ios/FDSmartOpen.h" />
             <source-file src="src/ios/FDSmartOpen.m" />
         </platform>
+        <platform name="android">
+        	<config-file target="config.xml" parent="/*">
+            	<feature name="SmartOpen">
+                	<param name="android-package" value="com.five_doors.cordova.smartopen.SmartOpen"/>
+            	</feature>
+        	</config-file>
+    	</platform>
+
     </plugin>
