@@ -19,7 +19,7 @@ module.exports = {
 alert: function(message, completeCallback, title, buttonLabel) {
 	var _title = (title || "Alert");
 	var _buttonLabel = (buttonLabel || "OK");
-	exec(completeCallback, null, "FDSmartOpen", "homeManagerAction", [message, _title, _buttonLabel]);
+	exec(completeCallback, null, "SmartOpen", "homeManagerAction", [message, _title, _buttonLabel]);
 }
 
 };
