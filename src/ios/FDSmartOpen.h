@@ -11,6 +11,6 @@
 
 @interface FDSmartOpen : CDVPlugin
 
-- (void)homeManagerAction:(CDVInvokedUrlCommand*)command;
+- (void)open:(CDVInvokedUrlCommand*)command;
 
 @end

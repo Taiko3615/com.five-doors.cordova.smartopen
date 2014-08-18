@@ -10,16 +10,34 @@
 
 @implementation FDSmartOpen
 
+NSString* iosScheme;
+NSString* iosAppStore;
+NSString* message;
+NSString* okButton;
+NSString* cancelButton;
+
+- (void)open:(CDVInvokedUrlCommand*)command {
+
+        iosScheme = [command.arguments objectAtIndex:1];
+        iosAppStore = [command.arguments objectAtIndex:2];
+        message = [command.arguments objectAtIndex:3];
+        okButton = [command.arguments objectAtIndex:4];
+        cancelButton = [command.arguments objectAtIndex:5];
 
 
-- (void)homeManagerAction:(CDVInvokedUrlCommand*)command {
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"imazefitness://"]]) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"imazefitness://"]];
-    }else{
-        UIAlertView* addCollection = [[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"If you don't have to download iMaze Fitness confirm download", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"no", nil) otherButtonTitles:NSLocalizedString(@"yes", nil), nil];
-        [addCollection show];
-    }
+   		if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:iosScheme]]) {
+        	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:iosScheme]];
+    	}else{
+        	UIAlertView* addCollection = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:cancelButton otherButtonTitles:okButton, nil];
+        	[addCollection show];
+    	}
     
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iosAppStore]];
+    }
 }
 
 @end

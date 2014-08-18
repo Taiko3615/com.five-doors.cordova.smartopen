@@ -2,24 +2,44 @@ var exec = require('cordova/exec');
 var platform = require('cordova/platform');
 
 /**
-* Provides access to notifications on the device.
+* Allows to start an external app and/or launch google play / app store
 */
 
 module.exports = {
 
 /**
-* Open a native alert dialog, with a customizable title and button text.
+* Checks if the app is present on the device.
+* If yes, then it launches it.
+* If no, then a popup will be displayed, proposing to download the app.
+* If the user clicks yes, he will be redirected to the app store
 *
-* @param {String} message Message to print in the body of the alert
-* @param {Function} completeCallback The callback that is called when user clicks on a button.
-* @param {String} title Title of the alert dialog (default: Alert)
-* @param {String} buttonLabel Label of the close button (default: OK)
+* Note for iOS : in order to be able to launch your app, you have register a custom URL scheme
+*  Check : Implementing Custom URL Schemes
+*  At this address : https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/AdvancedAppTricks/AdvancedAppTricks.html
+*
+* @param {String} androidPname Android package name ex : "com.five_doors.zenn" (null or "" acceptable)
+* @param {String} iosScheme iOS custom scheme, ex : "imazefitness://" (null or "" acceptable)
+* @param {String} iosAppStore iOS app store url, ex : "https://itunes.apple.com/cn/app/imaze-fitness/id797402141" (null or "" acceptable)
+* @param {String} message Label of the install message (default: "Go to the market and download this app ?")
+* @param {String} okButton Label of the ok button (default: "Ok")
+* @param {String} cancelButton Label of the cancel button (default: "Cancel")
 */
 
-alert: function(message, completeCallback, title, buttonLabel) {
-	var _title = (title || "Alert");
-	var _buttonLabel = (buttonLabel || "OK");
-	exec(completeCallback, null, "SmartOpen", "homeManagerAction", [message, _title, _buttonLabel]);
+open: function(androidPname, iosScheme, iosAppStore, message, okButton, cancelButton) {
+
+	var _androidPname = (androidPname || "");
+	
+	var _iosScheme = (iosScheme || "");
+	
+	var _iosAppStore = (iosAppStore || "");
+	
+	var _message = (message || "Go to the market and download this app ?");
+	
+	var _okButton = (okButton || "Ok");
+	
+	var _cancelButton = (cancelButton || "Cancel");
+	
+	exec(null, null, "SmartOpen", "open", [_androidPname, _iosScheme, _iosAppStore, _message, _okButton, _cancelButton]);
 }
 
 };
