@@ -1,11 +1,3 @@
-//
-//  FDSmartOpen.m
-//  iMaze Zen
-//
-//  Created by Hugo Garcia-Cotte on 18/8/14.
-//  Copyright (c) 2014 MED entreprises. All rights reserved.
-//
-
 #import "FDSmartOpen.h"
 
 @implementation FDSmartOpen
@@ -25,16 +17,20 @@ NSString* cancelButton;
         cancelButton = [command.arguments objectAtIndex:5];
 
 
+		//Let's check if the app is present (e.g. if we can open the given urlscheme)
    		if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:iosScheme]]) {
+   			//Yes ! then let's start it
         	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:iosScheme]];
     	}else{
-        	UIAlertView* addCollection = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:cancelButton otherButtonTitles:okButton, nil];
-        	[addCollection show];
+    		//No.. then let's display a popup
+        	UIAlertView* toMarket = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:cancelButton otherButtonTitles:okButton, nil];
+        	[toMarket show];
     	}
     
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+	//If the user clicked yes, let's go to the app store
     if (buttonIndex) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iosAppStore]];
     }

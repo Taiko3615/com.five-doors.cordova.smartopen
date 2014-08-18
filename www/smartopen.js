@@ -3,6 +3,12 @@ var platform = require('cordova/platform');
 
 /**
 * Allows to start an external app and/or launch google play / app store
+* Sample usage : 
+    smartopen.open("com.imaze.bluetooth.le",
+                   "imazefitness://",
+                   "https://itunes.apple.com/cn/app/imaze-fitness/id797402141",
+                   "Go to the market and download this app ?",
+                   "Ok","Cancel");
 */
 
 module.exports = {
@@ -17,7 +23,7 @@ module.exports = {
 *  Check : Implementing Custom URL Schemes
 *  At this address : https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/AdvancedAppTricks/AdvancedAppTricks.html
 *
-* @param {String} androidPname Android package name ex : "com.five_doors.zenn" (null or "" acceptable)
+* @param {String} androidPname Android package name ex : "com.imaze.bluetooth.le" (null or "" acceptable)
 * @param {String} iosScheme iOS custom scheme, ex : "imazefitness://" (null or "" acceptable)
 * @param {String} iosAppStore iOS app store url, ex : "https://itunes.apple.com/cn/app/imaze-fitness/id797402141" (null or "" acceptable)
 * @param {String} message Label of the install message (default: "Go to the market and download this app ?")
