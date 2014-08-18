@@ -20,7 +20,7 @@
         <platform name="android">
         	<config-file target="config.xml" parent="/*">
             	<feature name="SmartOpen">
-                	<param name="android-package" value="com.five_doors.cordova.smartopen.SmartOpen"/>
+                	<param name="android-package" value="com.five_doors.cordova.smartopen"/>
             	</feature>
             	
             	<source-file src="src/android/SmartOpen.java" target-dir="com/five_doors/cordova/smartopen"/>
