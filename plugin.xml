@@ -1,0 +1,20 @@
+    <?xml version="1.0" encoding="UTF-8"?>
+    <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+            id="com.five-doors.cordova.smartopen" version=1.0">
+        <name>Smart Open</name>
+        <description>Opens an external app or launches the app store. iOS and Android</description>
+        <license>Apache 2.0</license>
+        <keywords>cordova,open,ios,android,app store</keywords>
+        <js-module src="www/smartopen.js" name="device">
+            <clobbers target="smartopen" />
+        </js-module>
+        <platform name="ios">
+            <config-file target="config.xml" parent="/*">
+                <feature name="SmartOpen">
+                    <param name="ios-package" value="FDSmartOpen"/>
+                </feature>
+            </config-file>
+            <header-file src="src/ios/FDSmartOpen.h" />
+            <source-file src="src/ios/FDSmartOpen.m" />
+        </platform>
+    </plugin>
