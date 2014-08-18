@@ -4,7 +4,9 @@
         <name>Smart Open</name>
         <description>Opens an external app or launches the app store. iOS and Android</description>
         <license>Apache 2.0</license>
-        <keywords>cordova,open,ios,android,app store</keywords>
+        <keywords>cordova,open,ios,android,app store,launch,app</keywords>
+        <repo>https://github.com/Taiko3615/com.five-doors.cordova.smartopen</repo>
+		<issue>https://github.com/Taiko3615/com.five-doors.cordova.smartopen/issues</issue>
         <js-module src="www/smartopen.js" name="smartopen">
             <clobbers target="smartopen" />
         </js-module>
