@@ -5,7 +5,7 @@
         <description>Opens an external app or launches the app store. iOS and Android</description>
         <license>Apache 2.0</license>
         <keywords>cordova,open,ios,android,app store</keywords>
-        <js-module src="www/smartopen.js" name="device">
+        <js-module src="www/smartopen.js" name="smartopen">
             <clobbers target="smartopen" />
         </js-module>
         <platform name="ios">
